@@ -21,7 +21,7 @@ conn = snowflake.connector.connect(
 )
 
 sql = "select Completeness_Rate,Coverage from model_metrics " \
-      "where Model_Name = '{0}' order by CREATION_DATE_TIME ;".format(model_name)
+      "where Model_Name = '{0}' order by CREATION_DATE_TIME DESC;".format(model_name)
 results = conn.cursor().execute(sql)
 
 for rec in results:
@@ -31,5 +31,5 @@ print("Completeness_Rate and Coverage for {0} - {1}, {2}".
       format(model_name, completeness_rate, coverage))
 
 if round(completeness_rate, 2) < 95.00 or round(coverage, 2) < 95.00:
-    raise Exception("Validation is failing here")
+    raise Exception("Either completeness_rate or coverage is not satisfying")
     sys.exit(1)
