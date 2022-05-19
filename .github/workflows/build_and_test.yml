@@ -2,6 +2,9 @@ name: Build and Test
 env:
   sf_username: '${{ secrets.SF_USERNAME }}'
   sf_password: '${{ secrets.SF_PWD }}'
+  sf_account: '${{secret.SF_ACT}}'
+  sf_wh: '${{secret.SF_WAREHOUSE}}'
+  sf_db: '${{secret.DATABASE}}'
 
 on:
   push:
