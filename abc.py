@@ -21,7 +21,7 @@ conn = snowflake.connector.connect(
 )
 
 sql = "select Completeness_Rate,Coverage from model_metrics " \
-      "where Model_Name = '{0}' order by CREATION_DATE_TIME DESC;".format(model_name)
+      "where Model_Name = '{0}' order by CREATION_DATE_TIME ;".format(model_name)
 results = conn.cursor().execute(sql)
 
 for rec in results:
