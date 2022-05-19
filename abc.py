@@ -31,5 +31,5 @@ print("Completeness_Rate and Coverage for {0} - {1}, {2}".
       format(model_name, completeness_rate, coverage))
 
 if round(completeness_rate, 2) < 95.00 or round(coverage, 2) < 95.00:
-    raise Exception("Validation is failing")
+    raise Exception("Validation is failing here")
     sys.exit(1)
