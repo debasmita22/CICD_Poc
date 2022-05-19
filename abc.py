@@ -1,3 +1,3 @@
 import os
-print(os.environ['sf_username'])
-print(os.environ['sf_password'])
+print("sf_username -> {0}".format(os.environ['sf_username']))
+print("sf_password -> {0}".format(os.environ['sf_password']))
