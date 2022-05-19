@@ -1,7 +1,7 @@
 import os
+import sys
 import snowflake.connector
 
-# import pandas as pd
 model_name = 'PSP_FEE'
 
 sf_username = os.environ['sf_username']
@@ -21,12 +21,8 @@ conn = snowflake.connector.connect(
 )
 
 sql = "select Completeness_Rate,Coverage from model_metrics " \
-      "where Model_Name = '{0}';".format(model_name)
+      "where Model_Name = '{0}' order by CREATION_DATE_TIME DESC;".format(model_name)
 results = conn.cursor().execute(sql)
-
-# curs.execute("select getdate();")
-# print("Result is here -- ")
-# print(curs.fetchone()[0])
 
 for rec in results:
     completeness_rate = rec[0]
@@ -34,3 +30,6 @@ for rec in results:
 print("Completeness_Rate and Coverage for {0} - {1}, {2}".
       format(model_name, completeness_rate, coverage))
 
+if round(completeness_rate, 2) < 95.00 or round(coverage, 2) < 95.00:
+    raise Exception("Validation is failing")
+    sys.exit(1)
