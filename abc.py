@@ -25,8 +25,8 @@ sql = "select Completeness_Rate,Coverage from model_metrics " \
 results = conn.cursor().execute(sql)
 
 for rec in results:
-    completeness_rate = rec[0]
-    coverage = rec[1]
+    completeness_rate = float(rec[0])
+    coverage = float(rec[1])
 print("Completeness_Rate and Coverage for {0} - {1}, {2}".
       format(model_name, completeness_rate, coverage))
 
