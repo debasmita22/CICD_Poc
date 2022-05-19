@@ -23,5 +23,5 @@ conn = snowflake.connector.connect(
 
 curs = conn.cursor()
 curs.execute("select getdate();")
-print("Result -----------------")
+print("Result is here -- ")
 print(curs.fetchone()[0])
