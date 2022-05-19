@@ -1,4 +1,7 @@
 name: Build and Test
+env:
+  sf_username: '${{ secrets.SF_USERNAME }}'
+  sf_password: '${{ secrets.SF_PWD }}'
 
 on:
   push:
