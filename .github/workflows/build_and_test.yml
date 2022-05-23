@@ -31,7 +31,7 @@ jobs:
         import os
         print(os.environ['PATH'])
     - name: Explain why this job ran
-      uses: octo-org/action-name@main
+      uses: actions/checkout@v2
       with:
         entrypoint: /bin/echo
         args: The ${{ github.event_name }} event triggered this step.
