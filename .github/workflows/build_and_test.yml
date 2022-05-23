@@ -5,10 +5,13 @@ env:
   sf_account: '${{secrets.SF_ACT}}'
   sf_wh: '${{secrets.SF_WAREHOUSE}}'
   sf_db: '${{secrets.DATABASE}}'
+  model_name: '${{secrets.MODEL}}'
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'dbscripts/**'
 jobs:
   test:
     runs-on: ubuntu-latest
